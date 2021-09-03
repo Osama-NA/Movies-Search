@@ -1,0 +1,252 @@
+$main-color: rgb(255, 9, 91);
+$header-color: rgb(37, 37, 37);
+$background-color: rgba(0, 0, 0, 0.82);
+
+@mixin display-flex($direction, $jc, $ai) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+@mixin padding($s1, $s2) {
+  padding: $s1 $s2;
+}
+
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  color: rgb(197, 197, 197);
+  @include display-flex(column, center, center);
+  overflow-x: hidden;
+  letter-spacing: 1px;
+
+  .App {
+    @include display-flex(column, none, center);
+    background-color: $background-color;
+    width: 100vw;
+    max-width: 1200px;
+    min-height: 100vh;
+
+    .Header {
+      position: fixed;
+      background-color: $header-color;
+      width: 100%;
+      max-width: 1200px;
+      z-index: 1;
+      @include display-flex(row, space-between, center);
+
+      a {
+        text-decoration: none;
+      }
+      h1 {
+        color: $main-color;
+        font-size: 22px;
+        @include padding(1rem, 3rem);
+
+        sup,
+        sub {
+          font-size: 16px;
+        }
+      }
+
+      .menu-btn {
+        display: none;
+        color: rgb(167, 167, 167);
+      }
+
+      ul {
+        font-size: 18px;
+        @include padding(1rem, 3rem);
+        @include display-flex(row, space-evenly, none);
+
+        li {
+          @include padding(0, 1.5rem);
+          list-style: none;
+
+          a {
+            color: rgb(167, 167, 167);
+            text-decoration: none;
+            transition: all 0.5s ease;
+          }
+          a:hover {
+            color: rgb(255, 9, 91);
+          }
+        }
+      }
+
+      @media (max-width: 767px) {
+        @include display-flex(column, space-between, center);
+
+        .mobile-nav {
+          position: relative;
+          width: 100%;
+          @include display-flex(row, space-around, center);
+
+          .menu-btn {
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            font-size: 26px;
+            right: 28px;
+          }
+        }
+
+        ul {
+          margin: 0;
+          border-top: 1px solid rgb(66, 66, 66);
+          @include padding(0.5rem, 0);
+          @include display-flex(column, center, center);
+          width: 100%;
+
+          li {
+            @include padding(0.5rem, 0);
+          }
+        }
+      }
+    }
+
+    .Search {
+      margin-top: 102px;
+      width: 100%;
+      height: 100%;
+      @include display-flex(column, center, center);
+
+      .search-bar {
+        @include display-flex(row, center, center);
+        width: 100%;
+        margin: 3rem;
+
+        input {
+          padding: 1rem;
+          border-radius: 10px 0 0 10px;
+          width: 60%;
+          background-color: rgb(245, 245, 245);
+        }
+        button {
+          cursor: pointer;
+          font-weight: bold;
+          width: 100px;
+          padding: 1rem;
+          border-radius: 0 10px 10px 0;
+          background-color: $main-color;
+          color: rgb(235, 235, 235);
+          transition: all 0.5s ease;
+        }
+        button:hover {
+          background-color: rgb(230, 0, 76);
+        }
+        input,
+        button {
+          font-size: 16px;
+          outline: none;
+          border: none;
+        }
+
+        @media (max-width: 767px) {
+          input {
+            width: 55%;
+          }
+          button {
+            width: 85px;
+          }
+          input,
+          button {
+            padding: 0.8rem;
+            font-size: 15px;
+          }
+        }
+      }
+      @media (max-width: 767px) {
+        margin-top: 170px;
+      }
+    }
+
+    .MoviesList {
+      @include display-flex(row, center, center);
+      flex-wrap: wrap;
+      width: 90%;
+      max-width: 90%;
+
+      .Movie {
+        @include display-flex(column, none, center);
+        position: relative;
+        margin: 1rem 2rem;
+        width: 200px;
+        height: 300px;
+        background-color: rgb(224, 10, 82);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid $main-color;
+
+        img {
+          border-radius: 20px 20px 0 0;
+          height: 100%;
+          width: 100%;
+        }
+        ul {
+          display: none;
+          position: absolute;
+
+          li {
+            list-style: none;
+            font-size: 15px;
+            padding-bottom: 0.5rem;
+
+            b {
+              color: rgb(82, 82, 82);
+            }
+          }
+          .title {
+            text-align: center;
+            
+            b{
+              font-size: 18px;
+              font-weight: bold;
+              color: rgb(230, 9, 83);
+            }
+          }
+          .bookmark {
+            cursor: pointer;
+            text-align: center;
+            padding-bottom: 0rem;
+            
+            button{
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: bold;
+              padding: 0.4rem 0.8rem;
+              margin-bottom: 1.5rem;
+              border-radius: 5px;
+              outline: none;
+              border: none;
+              color: white;
+              background-color: $header-color;
+              transition: all 0.5s ease;
+            }
+            button:hover{
+              background-color: rgb(199, 9, 72);
+            }
+          }
+        }
+      }
+      .Movie:hover {
+        ul{
+          margin: 0;
+          height: 100%;
+          padding: 1rem 1rem;
+          border-radius: 20px;
+          background-color: rgba(0, 0, 0, 0.842);
+          @include display-flex(column, space-around, none);
+        }
+      }
+    }
+  }
+}
