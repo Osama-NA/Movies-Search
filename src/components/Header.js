@@ -5,7 +5,7 @@ const Header = () =>{
     return(
         <nav className="Header">
             <div className="mobile-nav">
-                <Link to="/Bookmarked"></Link><h1><sup>Boring</sup> Movies <sub>Boring</sub></h1>
+                <Link to="/"><h1><sup>Boring</sup> Movies <sub>Boring</sub></h1></Link>
                 <i className="fa fa-ellipsis-v menu-btn" />
             </div>
             <ul>

@@ -178,7 +178,7 @@ body {
       .Movie {
         @include display-flex(column, none, center);
         position: relative;
-        margin: 1rem 2rem;
+        margin: 1rem;
         width: 200px;
         height: 300px;
         background-color: rgb(224, 10, 82);
@@ -208,7 +208,7 @@ body {
             text-align: center;
             
             b{
-              font-size: 18px;
+              font-size: 16px;
               font-weight: bold;
               color: rgb(230, 9, 83);
             }
