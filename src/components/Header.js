@@ -13,7 +13,7 @@ const Header = () =>{
                     <Link to="/Search" id="search-nav-link">Search</Link>
                 </li>
                 <li>
-                    <Link to="/Bookmarked">Bookmarked</Link>
+                    <Link to="/Bookmarked" id="bookmarked-nav-link">Bookmarked</Link>
                 </li>
             </ul>
         </nav>

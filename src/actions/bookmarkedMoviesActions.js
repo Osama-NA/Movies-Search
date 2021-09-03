@@ -1,18 +1,14 @@
-const bookmarkMovie = (movie) => {
+
+export const bookmarkMovie = (movie) => {
     return{
         type: 'BOOKMARK_MOVIE',
         movie: movie
     }
 }
 
-const removeBookmark = (id) => {
+export const removeBookmark = (movie) => {
     return{
         type: 'REMOVE_BOOKMARK',
-        id: id
+        id: movie.id
     }
-}
-
-export default {
-    bookmarkMovie,
-    removeBookmark
 }

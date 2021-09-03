@@ -104,6 +104,7 @@ body {
           border-top: 1px solid rgb(66, 66, 66);
           @include padding(0.5rem, 0);
           @include display-flex(column, center, center);
+          display: none;
           width: 100%;
 
           li {
@@ -168,8 +169,8 @@ body {
         margin-top: 170px;
       }
     }
-
     .MoviesList {
+      align-self: center;
       @include display-flex(row, center, center);
       flex-wrap: wrap;
       width: 90%;
@@ -246,6 +247,20 @@ body {
           background-color: rgba(0, 0, 0, 0.842);
           @include display-flex(column, space-around, none);
         }
+      }
+    }
+    .Bookmarked{
+      margin-top: 140px;
+      width: 100%;
+      height: 100%;
+      @include display-flex(column, center, center);
+      @media (max-width: 767px) {
+        margin-top: 210px;
+      }
+
+      h2{
+        text-align: center;
+        padding: 1rem 2rem;
       }
     }
   }

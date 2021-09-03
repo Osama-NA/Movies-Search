@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { MoviesList } from "../components/MoviesList";
 import { useDispatch, useSelector } from 'react-redux';
-import setMovies from '../actions/moviesActions';
+import {setMovies} from '../actions/moviesActions';
 
-export const Search = ({ movies }) => {
+export const Search = () => {
     const storedMovies = useSelector(state => state.movies);
+
     const dispatch = useDispatch();
 
     const [text, setText] = useState("");
     const [search, setSearch] = useState("");
     const [foundMovies, setFoundMovies] = useState([]);
-
+    
     const handleChange = (e) => {
         setText(e.target.value);
     };
@@ -38,7 +39,7 @@ export const Search = ({ movies }) => {
                     image: movie.i.imageUrl,
                     year: movie.y,
                     staring: movie.s,
-                    rank: movie.rank,
+                    rank: movie.rank
                 };
                 moviesList.push(newMovie);
             } catch (error) {
@@ -82,7 +83,7 @@ export const Search = ({ movies }) => {
                     <button onClick={newSearch}>Search</button>
                 </div>
             </div>
-            <MoviesList moviesList={storedMovies ? storedMovies : foundMovies ? foundMovies: []} />
+            <MoviesList moviesList={storedMovies ? storedMovies : foundMovies ? foundMovies: []} bookmarked={false} />
         </>
     );
 };

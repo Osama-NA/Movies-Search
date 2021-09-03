@@ -1,7 +1,6 @@
-const setMovies = (movies) => {
+export const setMovies = (movies) => {
     return {
         type: 'SET_MOVIES',
         movies: movies
     }
 }
-export default setMovies;

@@ -28,15 +28,20 @@
     if ($(".Header ul").css("display") === "flex") {
       $(".Header ul").css("display", "none");
       $(".Search").css("margin-top","102px");
+      $(".Bookmarked").css("margin-top","140px");
     } else {
       $(".Header ul").css("display", "flex");
       $(".Search").css("margin-top","170px");
+      $(".Bookmarked").css("margin-top","210px");
     }
   });
 
   if($(window).width() < 768) {
     $(".Header ul #search-nav-link").click(() => {
         $(".Search").css("margin-top","170px");
+    });
+    $(".Header ul #bookmarked-nav-link").click(() => {
+        $(".Bookmarked").css("margin-top","210px");
     });
   }
 </script>
