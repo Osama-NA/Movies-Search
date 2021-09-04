@@ -26,6 +26,7 @@ body {
   color: rgb(197, 197, 197);
   @include display-flex(column, center, center);
   overflow-x: hidden;
+  overflow-y: scroll;
   letter-spacing: 1px;
 
   .App {
