@@ -3,6 +3,7 @@ const bookmarkedMoviesReducer = (state = [], action) => {
         case 'BOOKMARK_MOVIE':
             let newState = [...state];
             let bookmarkedMovie = action.movie;
+            //Filtering the bookmarkedMovies in case the movie is already bookmarked
             newState = newState.filter(movie => {
                 return movie.id !== bookmarkedMovie.id
             });

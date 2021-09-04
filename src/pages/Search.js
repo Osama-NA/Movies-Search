@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { MoviesList } from "../components/MoviesList";
 import { useDispatch, useSelector } from 'react-redux';
-import {setMovies} from '../actions/moviesActions';
-
+import { setMovies } from '../actions/moviesActions';
 export const Search = () => {
+
     const storedMovies = useSelector(state => state.movies);
 
     const dispatch = useDispatch();
@@ -21,14 +21,27 @@ export const Search = () => {
         setText("");
     };
 
+    //On every update on the 'search' state,
+    //getMovies gets called to fetch movies from API 
     useEffect(() => {
         getMovies();
     }, [search]);
+
+    //Setting search to empty string, to abort fetch 
+    //request on component unmount to avoid memory leak
+    useEffect(() => {
+        return () => {
+            setSearch("");
+        }
+    }, []);
 
     const getMovies = async () => {
         if (search.length === 0) return;
         const newMovies = await getAPICallResult(search);
 
+        //Mapping over newMovies data from API call results 
+        //and storing required data in a movie object 
+        //then adding the movie to the moviesList array
         const moviesList = [];
         if (newMovies === undefined) return;
         newMovies.map((movie) => {
@@ -47,13 +60,16 @@ export const Search = () => {
             }
         });
 
+        //Setting the 'foundMovies' state to pass it to MoviesList component as a prop
+        //Dispatching setMovies action to store moviesList in the redux store
         if (moviesList != null) {
             setFoundMovies(moviesList);
-            dispatch(setMovies(moviesList))
+            dispatch(setMovies(moviesList));
         }
         setSearch("");
     };
 
+    //API CALL
     const getAPICallResult = async (query) => {
         const API_Response = await fetch(
             `https://imdb8.p.rapidapi.com/auto-complete?q=${query}`,
@@ -83,6 +99,7 @@ export const Search = () => {
                     <button onClick={newSearch}>Search</button>
                 </div>
             </div>
+            {/* StoredMovies are passed as a prop if no foundMovies yet */}
             <MoviesList moviesList={storedMovies ? storedMovies : foundMovies ? foundMovies: []} bookmarked={false} />
         </>
     );

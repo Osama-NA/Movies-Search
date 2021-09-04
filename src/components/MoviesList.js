@@ -9,6 +9,8 @@ export const MoviesList = ({ moviesList, bookmarked}) => {
     return (
         <div className="MoviesList">
             {moviesList.map(movie => {
+                //Checks if a movie has already been bookmarked 
+                //and sets the bookmarked prop accordingly
                 const getBookmarked = () => {
                     const newBookmarkedMovies = bookmarkedMovies.filter(curr => curr.id !== movie.id);
                     if (newBookmarkedMovies.length !== bookmarkedMovies.length) {

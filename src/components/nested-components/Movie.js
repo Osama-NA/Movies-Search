@@ -8,12 +8,12 @@ export const Movie = ({id,title, image, year, staring, rank, bookmarked} ) => {
 
     const dispatch = useDispatch();
 
+    //Controls bookmark button
     const [ isBookmarked, setIsBookmarked ] = useState(bookmarked);
 
     const dispatchAction = () => {
-
         if (!isBookmarked) {
-            setIsBookmarked(!isBookmarked);;
+            setIsBookmarked(!isBookmarked);
             dispatch(bookmarkMovie(bookmarkedMovie));
         } else {
             setIsBookmarked(!isBookmarked);
