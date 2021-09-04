@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { MoviesList } from "../components/MoviesList";
 import { useDispatch, useSelector } from 'react-redux';
-import {setMovies} from '../actions/moviesActions';
-
+import { setMovies } from '../actions/moviesActions';
 export const Search = () => {
+
     const storedMovies = useSelector(state => state.movies);
 
     const dispatch = useDispatch();
@@ -24,6 +24,14 @@ export const Search = () => {
     useEffect(() => {
         getMovies();
     }, [search]);
+
+    //Executes on component unmount to abort fetch request 
+    //by setting search to empty string to avoid memory leak
+    useEffect(() => {
+        return () => {
+            setSearch("");
+        }
+    }, []);
 
     const getMovies = async () => {
         if (search.length === 0) return;
@@ -49,7 +57,7 @@ export const Search = () => {
 
         if (moviesList != null) {
             setFoundMovies(moviesList);
-            dispatch(setMovies(moviesList))
+            dispatch(setMovies(moviesList));
         }
         setSearch("");
     };
