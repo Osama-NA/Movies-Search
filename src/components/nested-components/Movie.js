@@ -5,7 +5,6 @@ import { bookmarkMovie, removeBookmark } from '../../actions/bookmarkedMoviesAct
 
 export const Movie = ({id,title, image, year, staring, rank, bookmarked} ) => {
     const bookmarkedMovie = { id, title, image, year, staring, rank };
-
     const dispatch = useDispatch();
 
     //Controls bookmark button
@@ -21,11 +20,19 @@ export const Movie = ({id,title, image, year, staring, rank, bookmarked} ) => {
         }
     }
 
+    //Remove movie loader when movie current image is done loading
+    const removeLoader = (e) => {
+        const loader = e.target.parentNode.childNodes[0];
+        loader.classList.add("done-loading");
+    }
 
     return (
         <div className="Movie">
+            <div className="Loading">
+                <div className="circle"></div>
+            </div>
             <p style={{display: "none"}}>{id}</p>
-            <img src={image} alt={image}/>
+            <img src={image} alt={image} onLoad={removeLoader}/>
             <ul>
                 <li className="title"><b>{title}</b></li>
                 <li><b>Year: </b><span>{year}</span></li>

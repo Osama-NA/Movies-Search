@@ -1,6 +1,7 @@
 $main-color: rgb(255, 9, 91);
 $header-color: rgb(37, 37, 37);
 $background-color: rgba(0, 0, 0, 0.82);
+$movie-background-color: rgb(224, 10, 82);
 
 @mixin display-flex($direction, $jc, $ai) {
   display: flex;
@@ -11,6 +12,35 @@ $background-color: rgba(0, 0, 0, 0.82);
 
 @mixin padding($s1, $s2) {
   padding: $s1 $s2;
+}
+
+@mixin animate($n, $d, $tf, $de, $ic){
+  animation-name: $n;
+  animation-duration: $d;
+  animation-timing-function: $tf;
+  animation-delay: $de;
+  animation-iteration-count: $ic;
+}
+
+@keyframes rotater {
+  0%{
+   transform: rotate(0deg);
+  }
+  100%{
+   transform: rotate(360deg);
+  }
+}
+
+@keyframes onOff {
+  0%{
+   background-color: $movie-background-color;
+  }
+  50%{
+    background-color: transparent;
+  }
+  100%{
+   background-color: $movie-background-color;
+  }
 }
 
 body {
@@ -188,6 +218,37 @@ body {
         overflow: hidden;
         border: 2px solid $main-color;
 
+        .Loading{
+          margin-top: 125px;
+          @include display-flex(column, center, center);
+          align-self: center;
+          justify-self: center;
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: linear-gradient(0deg, white 50%, $header-color 50%);
+          @include animate(rotater, 2s, linear, 0, infinite);
+
+          .circle{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: $movie-background-color;
+          }
+        }
+        .Loading::after{
+          content: "";
+          border-radius: 50%;
+          width: 50px;
+          height: 100px;
+          background-color: $movie-background-color;
+          @include animate(onOff, 2s, linear, 1s, infinite);
+        }
+        .done-loading{
+          display: none;
+        }
         img {
           border-radius: 20px 20px 0 0;
           height: 100%;
