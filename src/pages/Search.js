@@ -11,7 +11,8 @@ export const Search = () => {
     const [text, setText] = useState("");
     const [search, setSearch] = useState("");
     const [foundMovies, setFoundMovies] = useState([]);
-    
+    const [loaderClass, setLoaderClass] = useState({display: "none"});
+
     const handleChange = (e) => {
         setText(e.target.value);
     };
@@ -37,6 +38,7 @@ export const Search = () => {
 
     const getMovies = async () => {
         if (search.length === 0) return;
+        setLoaderClass({display:"flex"}); // start search loader
         const newMovies = await getAPICallResult(search);
 
         //Mapping over newMovies data from API call results 
@@ -67,6 +69,7 @@ export const Search = () => {
             dispatch(setMovies(moviesList));
         }
         setSearch("");
+        setLoaderClass({ display: "none" }); //Hide search loader
     };
 
     //API CALL
@@ -98,6 +101,11 @@ export const Search = () => {
                     />
                     <button onClick={newSearch}>Search</button>
                 </div>
+            </div>
+            <div className={` movies-loader`} style={loaderClass}>
+                <div className='circle1'></div>
+                <div className='circle2'></div>
+                <div className='circle3'></div>
             </div>
             {/* StoredMovies are passed as a prop if no foundMovies yet */}
             <MoviesList moviesList={storedMovies ? storedMovies : foundMovies ? foundMovies: []} bookmarked={false} />
