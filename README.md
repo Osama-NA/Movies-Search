@@ -1,6 +1,6 @@
 # Movies Search App
 
-React redux movies search web application using: react-router-dom, react-redux, SaSS
+React redux movies search web application using: react-router-dom, react-redux, Sass
 ##
 ### Installed Dependencies
 
