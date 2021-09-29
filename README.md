@@ -1,8 +1,6 @@
-# Movies Search App | React Redux
+# Movies Search App
 
-React redux movies search app using: react-router-dom, react-redux, SaSS
-
-## Use
+React redux movies search web application using: react-router-dom, react-redux, SaSS
 
 ### Installed Dependencies
 
@@ -17,4 +15,4 @@ IMDb API helps to query for all information about films, actors, characters,etcâ
 [Link to IMDb API](https://rapidapi.com/apidojo/api/imdb8)
 
 
-[Try the movies search app here](https://themoviessearch.netlify.app/)
+### [Try the movies search app here](https://themoviessearch.netlify.app/)
