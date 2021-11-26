@@ -242,8 +242,8 @@ body {
           align-self: center;
           justify-self: center;
           position: absolute;
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           background: linear-gradient(0deg, white 50%, $header-color 50%);
           @include animate(rotater, 2s, linear, 0, infinite);
@@ -259,8 +259,8 @@ body {
         .Loading::after {
           content: "";
           border-radius: 50%;
-          width: 50px;
-          height: 100px;
+          width: 40px;
+          height: 50px;
           background-color: $movie-background-color;
           @include animate(onOff, 2s, linear, 1s, infinite);
         }
@@ -290,7 +290,7 @@ body {
 
             b {
               font-size: 16px;
-              font-weight: bold;
+              font-weight: bolder;
               color: rgb(230, 9, 83);
             }
           }
